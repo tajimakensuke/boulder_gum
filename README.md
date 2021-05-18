@@ -1,24 +1,32 @@
-# README
+# boulder gum
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ボルダリングジム利用者がモチベーションアップできるサイト
 
-Things you may want to cover:
+### サイトテーマ
+ボルダリングジム利用者のコミュニケーションサイト
 
-* Ruby version
+### テーマを選んだ理由
+ボルダリングを楽しくそして、上達するためにジム内に
+友達がいることが一番の近道だと自分が感じました！！
+自分以外の利用者にも楽しく上達してもらいたいと思ったため、このテーマにしました
 
-* System dependencies
+### ターゲットユーザ
+関西のボルダリングジムを利用中の方
 
-* Configuration
+### 主な利用シーン
+ボルダリングジムに通っている方が友達を作ったり、
+コミュニケーションをとってモチベーションアップを図るために利用
 
-* Database creation
+## 設計書
 
-* Database initialization
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1p-zh812CSEOKaBbllTZ8L0m-NoGVZxKC7OorqDKIm1w/edit#gid=0
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- 仮想環境：Vagrant,VirtualBox
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
