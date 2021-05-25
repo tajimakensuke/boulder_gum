@@ -5,7 +5,7 @@ ActiveAdmin.register Gym do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :gym_name, :introduction, :image_id
+  permit_params :gym_name, :introduction, :image
   #
   # or
   #
@@ -14,5 +14,23 @@ ActiveAdmin.register Gym do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  form do |f|
+      f.inputs "gyms" do
+        f.input :gym_name
+        f.input :introduction
+        f.attachment_field :image
+      end
+      f.actions
+    end
+
+    show do |gym_image|
+      attributes_table do
+        row :gym_name
+        row :introduction
+        # show画面で画像を表示するためのタグを追加
+        row :image
+      end
+    end
+
+
 end
