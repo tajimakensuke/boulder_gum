@@ -1,5 +1,5 @@
 class Favorite < ApplicationRecord
   belongs_to :gym
-  belongs_to :
+  belongs_to :user
   
 end

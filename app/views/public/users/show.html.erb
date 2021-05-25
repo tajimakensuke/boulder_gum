@@ -1,0 +1,31 @@
+<div class='container'>
+  <h2 class='mb-5 mt-5'>マイページ</h2>
+
+    <table class='table'>
+      <%= form_with model:@user, local:true do |f| %>
+      <tr>
+        <td>アカウント画像</td>
+        <td><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+        <td><%= f.attachment_field :image %></td>
+        <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
+      </tr>
+      <tr>
+        <td>アカウント名</td>
+        <td><%= @user.name %></td>
+        <td><%= f.text_field :name %></td>
+        <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @user.email %></td>
+        <td><%= f.email_field :email %></td>
+        <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    </div>
+
+
+
+</div>

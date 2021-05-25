@@ -27,7 +27,6 @@ ActiveAdmin.register Gym do
       attributes_table do
         row :gym_name
         row :introduction
-        # show画面で画像を表示するためのタグを追加
         row :image
       end
     end
