@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :comment
-  has_many :like
-  has_many :favorite
+  has_many :gym_comments
+  has_many :likes
+  has_many :favorites
 end

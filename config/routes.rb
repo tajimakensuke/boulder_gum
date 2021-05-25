@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :favorites, only: [:create, :destroy]
     end
 
-    resources :comments, only: [:create, :updaate, :destroy]  do
+    resources :gym_comments, only: [:create, :updaate, :destroy]  do
       resources :likes, only: [:create, :destroy]
     end
 

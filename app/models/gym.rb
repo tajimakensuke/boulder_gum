@@ -1,6 +1,6 @@
 class Gym < ApplicationRecord
   attachment :image
   
-  has_many :comment
-  has_many :favorite
+  has_many :gym_comments
+  has_many :favorites
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_021743) do
+ActiveRecord::Schema.define(version: 2021_05_25_135254) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -38,17 +38,17 @@ ActiveRecord::Schema.define(version: 2021_05_25_021743) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "favorites", force: :cascade do |t|
     t.integer "gym_id"
-    t.text "commment"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "gym_id"
+  create_table "gym_comments", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "gym_id"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_021743) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "comment_id"
+    t.integer "gym_comment_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
