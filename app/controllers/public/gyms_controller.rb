@@ -7,7 +7,7 @@ class Public::GymsController < ApplicationController
 
   def show
     @gym = Gym.find(params[:id])
-    @gym_comments = GymComment.all
+    @gym_comments = @gym.gym_comments
     @gym_comment = GymComment.new
   end
 

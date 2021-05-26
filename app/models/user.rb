@@ -9,5 +9,5 @@ class User < ApplicationRecord
 
   has_many :gym_comments
   has_many :likes
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 end

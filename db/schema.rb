@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_135254) do
+ActiveRecord::Schema.define(version: 2021_05_26_125003) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -39,10 +39,12 @@ ActiveRecord::Schema.define(version: 2021_05_25_135254) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "gym_id"
     t.integer "user_id"
+    t.integer "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_favorites_on_gym_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "gym_comments", force: :cascade do |t|
