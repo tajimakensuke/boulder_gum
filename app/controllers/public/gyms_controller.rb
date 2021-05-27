@@ -12,7 +12,7 @@ class Public::GymsController < ApplicationController
   end
 
 
-end
+
 
 
   private
@@ -24,4 +24,4 @@ end
     def gym_comment_params
       params.require(:gym_comment).permit(:comment)
     end
-
+end

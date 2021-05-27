@@ -11,11 +11,15 @@ class Public::GymCommentsController < ApplicationController
   end
 
   def destroy
+    GymComment.find_by(params[:id], gym_id: params[:gym_id]).destroy
+
+      redirect_to request.referer
   end
 
-end
+
 
 private
   def gym_comment_params
     params.require(:gym_comment).permit(:comment, :user_id)
   end
+end

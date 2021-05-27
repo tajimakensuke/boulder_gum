@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :homes, only: [:index]
 
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:show, :edit, :update, :destroy] do
       member do
         patch :withdraw
       end

@@ -24,8 +24,23 @@
       <% end %>
     </table>
 
-    </div>
+    <!--コメント履歴（削除）-->
+    <h3 class ='mt-2'>コメント一覧</h3>
+    <table class='table'>
+      <% @gym_comments.each do |gym_comment| %>
+      <tr>
+        <td><%= gym_comment.gym.gym_name %></td>
+        <td><%= gym_comment.comment %></td>
+        <td><%= link_to "削除",  gym_comment_path, method: :delete %></td>
+      </tr>
+
+      <% end %>
+    </table>
 
 
+    <!--退会機能-->
+    <div><%= link_to "退会する", user_path, method: :delete, data: { confirm: '退会しますか？' } %></div>
 
 </div>
+
+
