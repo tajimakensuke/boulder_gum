@@ -71,3 +71,4 @@ gem 'refile-mini_magick'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'coffee-script-source', '1.8.0'
+gem 'ransack'

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     end
 
     resources :gyms, only: [:index, :show]  do
+      collection do
+        get :search
+      end
       resources :favorites, only: [:create, :destroy]
     end
 
