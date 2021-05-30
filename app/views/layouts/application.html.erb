@@ -45,6 +45,15 @@
             <% end %>
             </ul>
           </div>
+
+          <!--検索機能-->
+          <div>
+          <%= search_form_for @search, url: search_gyms_path do |f| %>
+          <%= f.label :gym_name_or_station_or_address_or_introduction_cont, "ジム検索" %>
+          <%= f.search_field :gym_name_or_station_or_address_or_introduction_cont %>
+          <div class="actions"><%= f.submit "検索" %></div>
+          <% end %>
+          </div>
         </div>
       </nav>
     </header>

@@ -1,25 +1,4 @@
-<div class = "container">
-    <div class = "row">
-        <h1 class = "col-md-8">top</h1>
-    </div>
 
-    <h2>gmap</h2>
-
-<!-- 地名入力用のinputを追加 -->
-<input id="address" type="textbox" value="Sydney, NSW">
-
-<!-- buttonをクリックしたらcodeAddressを実行　-->
-<input type="button" value="Encode" onclick="codeAddress()">
-<div id='map'>
-</div>
-
-<style>
-#map{
-  height: 400px;
-}
-</style>
-
-<script>
 /*
 mapを関数の外で定義(codeAddressでも使うため)
 geocoderを用意
@@ -58,7 +37,5 @@ function codeAddress(){
     }
   });
 }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VscNwMZdbm_QFHc8DiX4gKGtNisrEoQ&callback=initMap" async defer></script>
 
-</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VscNwMZdbm_QFHc8DiX4gKGtNisrEoQ&callback=initMap" async defer></script>

@@ -5,7 +5,7 @@ ActiveAdmin.register Gym do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :gym_name, :introduction, :image
+  permit_params :gym_name, :introduction, :image, :address, :station
   #
   # or
   #
@@ -18,6 +18,8 @@ ActiveAdmin.register Gym do
       f.inputs "gyms" do
         f.input :gym_name
         f.input :introduction
+        f.input :address
+        f.input :station
         f.attachment_field :image
       end
       f.actions
@@ -27,6 +29,8 @@ ActiveAdmin.register Gym do
       attributes_table do
         row :gym_name
         row :introduction
+        row :address
+        row :station
         row :image
       end
     end

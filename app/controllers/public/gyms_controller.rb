@@ -36,7 +36,7 @@ class Public::GymsController < ApplicationController
   private
 
     def gym_params
-      params.require(:gym).permit(:gym_name, :introduction, :image,)
+      params.require(:gym).permit(:gym_name, :introduction, :image, :address, :station)
     end
 
     def gym_comment_params
@@ -44,7 +44,7 @@ class Public::GymsController < ApplicationController
     end
 
     def search_params
-    params.require(:q).permit(:gym)
+    params.require(:q).permit(:gym_name, :introduction, :image, :address, :station)
     end
 
 end
