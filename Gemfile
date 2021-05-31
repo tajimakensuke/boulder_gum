@@ -73,3 +73,5 @@ gem 'rubocop-rails', require: false
 gem 'coffee-script-source', '1.8.0'
 gem 'ransack'
 gem 'geocoder'
+gem 'kaminari'
+gem 'gon'

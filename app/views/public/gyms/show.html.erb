@@ -6,11 +6,9 @@
         <%= @gym.gym_name %>
       </h2>
 
-      <!--お気に入り登録-->
+<!--お気に入り登録-->
         <% if !user_signed_in? %>
           <p>★<%= @gym.favorites.count %> お気に入り<p>
-
-
         <% elsif @gym.favorited_by?(current_user) %>
         <p>
           <%= link_to gym_favorite_path(@gym), method: :delete do %>
@@ -25,44 +23,40 @@
           <% end %>
         </p>
         <% end %>
-        
-        
-        <h2>gmap</h2>
-<!-- form_withはデフォルトでremote: trueの挙動になります -->
-  <%= form_with url: map_request_maps_path, method: :get, remote: true do |f|%>
-  <%= f.text_field :address %>
-  <%= f.submit '地図表示' %>
-<% end %>
 
+<!--地図表示-->
+      <h2>gmap</h2>
+      <div id="map"></div>
+        <script>
+          let map;
 
-  <div id="map">
-  </div>
+          function initMap() {
+            // geocoderを初期化
+            geocoder = new google.maps.Geocoder()
 
-  <style>
-    #map{
-    height: 400px;
-    }
-  </style>
+            map = new google.maps.Map(document.getElementById('map'), {
+              // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+              center: {
+                lat: gon.gym.latitude,
+                lng: gon.gym.longitude
+              },
+              // マップの倍率はお好みで
+              zoom: 17,
+            });
 
+            marker = new google.maps.Marker({
+              // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+              position: {
+                lat: gon.gym.latitude,
+                lng: gon.gym.longitude
+              },
+              map: map
+            });
+          }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VscNwMZdbm_QFHc8DiX4gKGtNisrEoQ&callback=initMap"></script>
 
-
-<script>
-  let mapInstance;
-  function initMap(){
-    
-  var mapInstance  = new google.maps.LatLng(<%= @latlng[0] %>, <%= @latlng[1] %>);
-  var Options = {
-   zoom: 15,      //地図の縮尺値
-   center: mapInstance ,    //地図の中心座標
-   mapTypeId: 'roadmap'   //地図の種類
-  };
-  var map = new google.maps.Map(document.getElementById('map'), Options);
-  }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VscNwMZdbm_QFHc8DiX4gKGtNisrEoQ&callback=initMap" async defer></script>
-
-
+<!--画像表示-->
       <div><%= attachment_image_tag @gym, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %></div>
     </div>
   </div>

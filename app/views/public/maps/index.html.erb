@@ -1,33 +1,33 @@
 <h2>gmap</h2>
 <!-- form_withはデフォルトでremote: trueの挙動になります -->
-  <%= form_with url: map_request_maps_path, method: :get, remote: true do |f|%>
+<%= form_with url: map_request_maps_path, method: :get, remote: true do |f|%>
   <%= f.text_field :address %>
   <%= f.submit '地図表示' %>
 <% end %>
 
 
-  <div id="map">
-  </div>
+<div id="map">
+</div>
 
-  <style>
-    #map{
-    height: 400px;
-    }
-  </style>
+<style>
+#map{
+  height: 400px;
+}
+</style>
 
 
 
 <script>
-  let mapInstance;
-  function initMap(){
-  var mapInstance  = new google.maps.LatLng(<%= @latlng[0] %>, <%= @latlng[1] %>);
-  var Options = {
-   zoom: 15,      //地図の縮尺値
-   center: mapInstance ,    //地図の中心座標
-   mapTypeId: 'roadmap'   //地図の種類
-  };
-  var map = new google.maps.Map(document.getElementById('map'), Options);
-  }
+let mapInstance
+function initMap(){
+var mapInstance  = new google.maps.LatLng(35.6811673, 139.7670516);
+var Options = {
+ zoom: 15,      //地図の縮尺値
+ center: mapInstance ,    //地図の中心座標
+ mapTypeId: 'roadmap'   //地図の種類
+};
+var map = new google.maps.Map(document.getElementById('map'), Options);
+}
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6VscNwMZdbm_QFHc8DiX4gKGtNisrEoQ&callback=initMap" async defer></script>

@@ -1,4 +1,7 @@
 class Gym < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   attachment :image
 
   has_many :gym_comments, dependent: :destroy

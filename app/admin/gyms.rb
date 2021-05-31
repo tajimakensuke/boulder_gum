@@ -1,11 +1,11 @@
-ActiveAdmin.register Gym do
-
+ActiveAdmin.register Gym, :as => "GymAdmin"  do
+#, :as => "aaa"
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :gym_name, :introduction, :image, :address, :station
+  permit_params :gym_name, :introduction, :image, :address, :station, :latitude, :longitude
   #
   # or
   #
@@ -20,6 +20,8 @@ ActiveAdmin.register Gym do
         f.input :introduction
         f.input :address
         f.input :station
+        f.input :latitude
+        f.input :longitude
         f.attachment_field :image
       end
       f.actions
@@ -31,6 +33,8 @@ ActiveAdmin.register Gym do
         row :introduction
         row :address
         row :station
+        row :latitude
+        row :longitude
         row :image
       end
     end
