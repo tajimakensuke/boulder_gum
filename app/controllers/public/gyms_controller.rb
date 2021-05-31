@@ -16,16 +16,8 @@ class Public::GymsController < ApplicationController
     @gym_comments = @gym.gym_comments
     @gym_comment = GymComment.new
     @gym_address = @gym.address
-
+    @gym_favorites = @gym.favorites
     gon.gym = @gym
-
-
-    # results = Geocoder.search("大阪")
-    # @latlng = results.first.coordinates
-
-    # respond_to do |format|
-    #   format.js
-    #   end
 
 
   end
@@ -38,16 +30,12 @@ class Public::GymsController < ApplicationController
       @gym = @gyms.ids
       redirect_to gym_path(@gym)
     end
-
-
-
   end
 
 
 
 
   private
-
     def gym_params
       params.require(:gym).permit(:gym_name, :introduction, :image, :address, :station)
     end
@@ -56,8 +44,12 @@ class Public::GymsController < ApplicationController
       params.require(:gym_comment).permit(:comment)
     end
 
+    def favorite_params
+      params.require(:favorite)
+    end
+
     def search_params
-    params.require(:q).permit(:gym_name, :introduction, :image, :address, :station)
+      params.require(:q).permit(:gym_name, :introduction, :image, :address, :station)
     end
 
 end
