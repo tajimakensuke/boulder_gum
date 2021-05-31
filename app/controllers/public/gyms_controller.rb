@@ -15,6 +15,17 @@ class Public::GymsController < ApplicationController
     @gym = Gym.find(params[:id])
     @gym_comments = @gym.gym_comments
     @gym_comment = GymComment.new
+    @gym_address = @gym.address
+
+
+    results = Geocoder.search("大阪")
+    @latlng = results.first.coordinates
+
+    respond_to do |format|
+      format.js
+      end
+
+
   end
 
   def search

@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :homes, only: [:index]
 
+    resources :maps, only: [:index] do
+      collection do
+        get '/map_request', to: 'maps#map', as: 'map_request'
+      end
+    end
+
     resources :users, only: [:show, :edit, :update, :destroy] do
       member do
         patch :withdraw

@@ -1,0 +1,23 @@
+(function(){
+  var mapLatLng  = new google.maps.LatLng(<%= @latlng[0] %>, <%= @latlng[1] %>);
+
+  var Options = {
+   zoom: 15,      //地図の縮尺値
+   center: mapLatLng ,    //地図の中心座標
+   mapTypeId: 'roadmap'   //地図の種類
+  };
+
+  var mapInstance = new google.maps.Map(document.getElementById('map'), Options);
+
+  // 位置情報をもつ変数を用意
+  let pos = new google.maps.LatLng(
+   <%= @latlng[0] %>, //latitude
+   <%= @latlng[1] %>,  //longitude
+  );
+
+  let marker = new google.maps.Marker({
+    map: mapInstance,
+    position: pos
+  });
+
+})()
