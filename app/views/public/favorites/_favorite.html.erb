@@ -1,0 +1,26 @@
+
+
+      <div>
+        <% if !user_signed_in? %>
+          <p>★<%= @gym.favorites.count %> お気に入り<p>
+        <% elsif @gym.favorited_by?(current_user) %>
+          <p>
+            <%= link_to gym_favorite_path(@gym), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+              ★<%= @gym.favorites.count %> お気に入り
+            <% end %>
+          </p>
+
+        <% else %>
+          <p>
+          <%= link_to gym_favorites_path(@gym), method: :post, remote: true, data: {"turbolinks" => false} do %>
+            ☆<%= @gym.favorites.count %>  お気に入り
+          <% end %>
+          </p>
+        <% end %>
+      </div>
+
+      <h6 class='mt-3 mb-1'>お気に入り登録者</h6>
+        <div><% @gym_favorites.each do |favorite| %>
+          <%= favorite.user.name %>
+          <% end %>
+        </div>

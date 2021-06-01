@@ -6,23 +6,6 @@
   <div class= 'row'>
     <div class ='col-4'>
 
-<!--お気に入り登録-->
-        <% if !user_signed_in? %>
-          <p>★<%= @gym.favorites.count %> お気に入り<p>
-        <% elsif @gym.favorited_by?(current_user) %>
-          <p>
-            <%= link_to gym_favorite_path(@gym), method: :delete, remote: true do %>
-              ★<%= @gym.favorites.count %> お気に入り
-            <% end %>
-          </p>
-
-        <% else %>
-          <p>
-          <%= link_to gym_favorites_path(@gym), method: :post, remote: true do %>
-            ☆<%= @gym.favorites.count %>  お気に入り
-          <% end %>
-          </p>
-        <% end %>
 
 <!--画像表示-->
       <div class ='mb-5'><%= attachment_image_tag @gym, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %></div>
@@ -40,16 +23,14 @@
           <td>最寄り駅</td>
           <td><%= @gym.station %></td>
         </tr>
-        <tr>
-          <td>お気に入り登録者</td>
-          <td>
-          <% @gym_favorites.each do |favorite| %>
-          <%= favorite.user.name %>
-          <% end %>
-
-          </td>
-        </tr>
       </table>
+
+<!--お気に入り登録（非同期）-->
+      <div id="favorites_buttons_<%= @gym.id %>">
+        <%= render partial: 'public/favorites/favorite', locals: {gym: @gym} %>
+      </div>
+
+
     </div>
   </div>
 
