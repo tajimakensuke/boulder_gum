@@ -1,25 +1,23 @@
-class Public::MapsController < ApplicationController
+# frozen_string_literal: true
 
-  def index
-  end
+module Public
+  class MapsController < ApplicationController
+    def index; end
 
+    def map
+      results = Geocoder.search('大阪')
+      @latlng = results.first.coordinates
+      # respond_to以下の記述によって、
+      # remote: trueのアクセスに対して、
+      # map.js.erbが変えるようになります。
 
-  def map
-
-
-
-    results = Geocoder.search("大阪")
-    @latlng = results.first.coordinates
-    # respond_to以下の記述によって、
-    # remote: trueのアクセスに対して、
-    # map.js.erbが変えるようになります。
-
-    respond_to do |format|
-      format.js
+      respond_to do |format|
+        format.js
+      end
     end
-  end
 
-  private
+    private
+
     def geocoder_params
       params.require(:geocoder).permit(:address)
     end
@@ -27,5 +25,5 @@ class Public::MapsController < ApplicationController
     def gym_params
       params.require(:gym).permit(:gym_name, :introduction, :image, :address, :station)
     end
-
+  end
 end

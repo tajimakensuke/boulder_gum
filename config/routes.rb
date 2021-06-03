@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root to: 'public/homes#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -15,24 +17,21 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: %i[show edit update destroy] do
       member do
         patch :withdraw
       end
     end
 
-    resources :gyms, only: [:index, :show]  do
+    resources :gyms, only: %i[index show] do
       collection do
         get :search
       end
-      resources :favorites, only: [:create, :destroy]
+      resources :favorites, only: %i[create destroy]
     end
 
-    resources :gym_comments, only: [:create, :updaate, :destroy]  do
-      resources :likes, only: [:create, :destroy]
-    end
-
+    resources :gym_comments, only: %i[create updaate destroy] do
+      resources :likes, only: %i[create destroy]
     end
   end
-
-
+end

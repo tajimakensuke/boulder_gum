@@ -27,7 +27,7 @@
 
 <!--お気に入り登録（非同期）-->
       <div id="favorites_buttons_<%= @gym.id %>">
-        <%= render partial: 'public/favorites/favorite', locals: {gym: @gym} %>
+        <%= render partial: 'public/favorites/favorite', locals: {gym: @gym, gym_favorites: [] } %>
       </div>
 
 

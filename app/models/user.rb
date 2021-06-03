@@ -1,5 +1,6 @@
-class User < ApplicationRecord
+# frozen_string_literal: true
 
+class User < ApplicationRecord
   attachment :image
 
   # Include default devise modules. Others available are:
@@ -10,5 +11,4 @@ class User < ApplicationRecord
   has_many :gym_comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
 end

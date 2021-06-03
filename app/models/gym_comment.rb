@@ -1,5 +1,6 @@
-class GymComment < ApplicationRecord
+# frozen_string_literal: true
 
+class GymComment < ApplicationRecord
   belongs_to :user
   belongs_to :gym
   has_many :likes, dependent: :destroy
@@ -9,5 +10,4 @@ class GymComment < ApplicationRecord
   end
 
   validates :comment, presence: true
-
 end

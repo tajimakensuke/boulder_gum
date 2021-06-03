@@ -1,7 +1,7 @@
-class Public::HomesController < ApplicationController
+# frozen_string_literal: true
 
-  def index
+module Public
+  class HomesController < ApplicationController
+    def index; end
   end
-
-
 end
