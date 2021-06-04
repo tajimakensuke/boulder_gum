@@ -49,13 +49,13 @@
 
           <!--検索機能-->
           <div>
-          <%= search_form_for @search, url: search_gyms_path do |f| %>
-          <%= f.label :gym_name_or_station_or_address_or_introduction_cont, "ジム検索" %>
-          <%= f.search_field :gym_name_or_station_or_address_or_introduction_cont %>
-          <div class="actions"><%= f.submit "検索" %></div>
-          <% end %>
-          <%= link_to "map", maps_path,data: {"turbolinks"=>false} %>
+            <%= search_form_for @search, url: search_gyms_path do |f| %>
+            <%= f.label :gym_name_or_station_or_address_or_introduction_cont, "ジム検索" %>
+            <%= f.search_field :gym_name_or_station_or_address_or_introduction_cont %>
+            <%= f.submit "検索" %>
+            <% end %>
           </div>
+
         </div>
       </nav>
     </header>
@@ -68,4 +68,15 @@
   <body>
     <%= yield %>
   </body>
+
+  <!--ヘッダー-->
+
+  <body class="d-flex flex-column vh-100">
+  <div class="bg-light">
+    <footer id="footer" class="border-top bg-white"style="height:30px">
+        <div class='mx-auto'>関西ボルダー</div>
+    </footer>
+  </div>
+</body>
+
 </html>

@@ -1,34 +1,24 @@
 <div class = "container">
     <div class = "row">
-        <h1 class = "col-md-8">top</h1>
+      <div class = 'col-12 mt-5 mb-5'>
+        <img src="/assets/bouider_s_top.jpg" class="img-fluid" alt="Responsive image" width='100%'>
+      </div>
     </div>
 
-<!--    <h2>gmap</h2>-->
-<!-- form_withはデフォルトでremote: trueの挙動になります -->
-<!--<#%= form_with url: map_request_maps_path, method: :get do |f|%>-->
-<!--  <#%= f.text_field :address %>-->
-<!--  <#%= f.submit '地図表示' %>-->
-<!--<#% end %>-->
+    <!--最新コメント-->
+    <div class='mt-5'>
+      <h4>最新コメント</h4>
+        <table class='table'>
+          <% @gym_comments.each do |comment| %>
+            <tr>
+              <td><%= link_to comment.gym.gym_name, gym_path(comment.gym.id) %></td>
+              <td><%= comment.comment %></td>
+              <td><%= comment.user.name %></td>
+            </tr>
+          <% end %>
+        </table>
 
-<!--<div id="map">-->
-<!--</div>-->
+    </div>
 
-<!--<style>-->
-<!--#map{-->
-<!--  height: 400px;-->
-<!--}-->
-<!--</style>-->
 
-<!--<script>-->
-  <!--let mapInstance //この変数はmap.js.erbでも使うのでタイプミスに注意-->
-
-<!--  function initMap(){-->
-<!--    mapInstance = new google.maps.Map(document.getElementById('map'), {-->
-<!--    center: {lat: -34.397, lng: 150.644},-->
-<!--    zoom: 8-->
-<!--    });-->
-<!--  }-->
-<!--</script>-->
-<!--<script src="https://maps.googleapis.com/maps/api&/js?key=AIzaSyA6VscNwMZdbm_QFHc8DiX4gKGtNisrEoQ&callback=initMap" async defer></script>-->
-
-<!--</div>-->
+</div>

@@ -3,7 +3,7 @@
 module Public
   class GymsController < ApplicationController
     def index
-      @gyms = Gym.all
+      @gyms = Gym.page(params[:page]).per(5)
 
       # 検索オブジェクト
       @search = Gym.ransack(params[:q])
