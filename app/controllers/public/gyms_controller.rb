@@ -2,6 +2,8 @@
 
 module Public
   class GymsController < ApplicationController
+
+
     def index
       @gyms = Gym.page(params[:page]).per(5)
 
@@ -12,7 +14,7 @@ module Public
 
     def show
       @gym = Gym.find(params[:id])
-      @gym_comments = @gym.gym_comments
+      @gym_comments = @gym.gym_comments.order(created_at: :desc)
       @gym_comment = GymComment.new
       @gym_address = @gym.address
       @gym_favorites = @gym.favorites

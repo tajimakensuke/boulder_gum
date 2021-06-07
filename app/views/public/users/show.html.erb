@@ -1,6 +1,8 @@
 <div class='container'>
   <h2 class='mb-5 mt-5'>マイページ</h2>
 
+
+<!--アカウント編集-->
     <table class='table'>
       <%= form_with model:@user, local:true do |f| %>
       <tr>
@@ -26,18 +28,23 @@
 
     <!--コメント履歴（削除）-->
     <h3 class ='mt-2'>コメント一覧</h3>
-    <table class='table'>
-      <% @gym_comments.each do |gym_comment| %>
-      <tr>
-        <td><%= gym_comment.gym.gym_name %></td>
-        <td><%= gym_comment.comment %></td>
-        <td><%= link_to "削除",  gym_comment_path, method: :delete %></td>
-      </tr>
+      <table class='table'>
+        <% @gym_comments.each do |gym_comment| %>
+        <tr>
+          <td><%= gym_comment.gym.gym_name %></td>
+          <td><%= gym_comment.comment %></td>
+          <td><%= link_to "削除",  gym_comment_path, method: :delete %></td>
+        </tr>
+         <% end %>
+      </table>
 
-      <% end %>
-    </table>
-
-
+    <!--お気に入り-->
+    <h3 class ='mt-2'>お気に入りジム一覧</h3>
+      <div>
+        <% @gym_favorites.each do |favorite| %>
+           <i class ="ml-3"><%= favorite.gym.gym_name %></i>
+         <% end %>
+      </div>
     <!--退会機能-->
     <div><%= link_to "退会する", user_path, method: :delete, data: { confirm: '退会しますか？' } %></div>
 

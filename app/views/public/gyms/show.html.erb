@@ -8,7 +8,7 @@
 
 
 <!--画像表示-->
-      <div class ='mb-5'><%= attachment_image_tag @gym, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg" %></div>
+      <div class ='mb-5'><%= attachment_image_tag @gym, :image, :fill, 300, 300, format: 'jpeg' %></div>
     </div>
     <div class = 'col-8'>
       <h6 class = 'mb-5'>
@@ -66,12 +66,15 @@
 
 
   <!--コメント機能-->
-  <div class='mt-2'>
-    <%= form_with model:@gym_comment, url:gym_comments_path(:gym_id=>@gym.id), local: true do |f| %>
-    <%= f.text_area :comment, placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-    <% end %>
-  </div>
+    <%# if user_signed_in? %>
+      <div class='mt-2'>
+        <%= form_with model:@gym_comment, url:gym_comments_path(:gym_id=>@gym.id), local: true do |f| %>
+        <%= f.text_area :comment, placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+    <%# end %>
+
 
   <!--コメント一覧-->
   <div>
@@ -79,24 +82,27 @@
       <h3 class ='mt-3'>コメント</h3>
       <ul class="list-group">
         <% @gym_comments.each do |gym_comment| %>
-          <li class="list-group-item"><%= gym_comment.comment %> <%= gym_comment.user.name %></li>
+          <li class="list-group-item">
+            <%= gym_comment.comment %>
+            <br>ユーザー名       <%= gym_comment.user.name %>
+          </li>
 
   <!--いいね機能-->
           <li>
             <% if !user_signed_in? %>
-            <P>♥<%= gym_comment.likes.count %>いいね</P>
+            <P><%= gym_comment.likes.count %>ガンバ！！</P>
 
             <% elsif gym_comment.liked_by?(current_user) %>
               <p>
                 <%= link_to gym_comment_like_path(gym_comment), method: :delete do %>
-                  ♥<%= gym_comment.likes.count %> いいね
+                  <%= gym_comment.likes.count %> ガンバ！！
                 <% end %>
               </p>
               <% else %>
 
               <p>
                 <%= link_to gym_comment_likes_path(gym_comment), method: :post do %>
-                  ♡<%= gym_comment.likes.count %> いいね
+                  <%= gym_comment.likes.count %> ガンバ！！
                 <% end %>
               </p>
             <% end %>

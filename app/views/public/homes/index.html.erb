@@ -1,4 +1,22 @@
 <div class = "container">
+
+<!--エラーメッセージ-->
+  <div class ="col mx-auto" >
+    <p class ="bg-danger text-white text-center"><%= flash[:alert] %></p>
+  </div>
+
+
+  <!--新規作成ログイン-->
+  <div class='row mt-5'>
+    <div class='col-6 text-center'>
+      <%= link_to "ログイン", new_user_session_path, class: 'btn btn-success text-light' %>
+    </div>
+    <div class='col-6 text-center'>
+      <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-primary text-light' %>
+    </div>
+  </div>
+
+
     <div class = "row">
       <div class = 'col-12 mt-5 mb-5'>
         <img src="/assets/bouider_s_top.jpg" class="img-fluid" alt="Responsive image" width='100%'>
@@ -9,6 +27,11 @@
     <div class='mt-5'>
       <h4>最新コメント</h4>
         <table class='table'>
+          <tr>
+            <th>ジム</th>
+            <th>コメント</th>
+            <th>ユーザー</th>
+          </tr>
           <% @gym_comments.each do |comment| %>
             <tr>
               <td><%= link_to comment.gym.gym_name, gym_path(comment.gym.id) %></td>

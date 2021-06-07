@@ -4,9 +4,12 @@ module Public
   class UsersController < ApplicationController
     before_action :authenticate_user!, except: [:top]
 
+
     def show
       @user = current_user
       @gym_comments = current_user.gym_comments
+      @gym_favorites = current_user.favorites
+      
     end
 
     def update
@@ -26,14 +29,18 @@ end
 
 private
 
-def user_params
-  params.require(:user).permit(:email, :name, :image)
-end
+  def user_params
+    params.require(:user).permit(:email, :name, :image)
+  end
 
-def gym_comment_params
-  params.require(:gym_coment).permit(:user_id, :gym_id, :comment)
-end
+  def gym_comment_params
+    params.require(:gym_coment).permit(:user_id, :gym_id, :comment)
+  end
 
-def gym_params
-  params.require(:gym).permit(:gym_name)
-end
+  def gym_params
+    params.require(:gym).permit(:gym_name)
+  end
+
+  def favorite_params
+    paramd.require(:favorite)
+  end

@@ -2,5 +2,6 @@
 
 module Admin
   class GymsController < ApplicationController
+
   end
 end
