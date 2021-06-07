@@ -1,31 +1,96 @@
 <div class='container'>
-  <h2 class='mb-5 mt-5'>マイページ</h2>
+  <div class='row'>
+    <h2 class='col-6 mb-5 mt-5'>ユーザー詳細</h2>
+      <div class='col-6 mb-5 mt-5'>
 
+      <% if current_user.following?(@user) %>
+        <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: 'btn btn-danger text-white' %>
+      <% else %>
+        <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: 'btn btn-success text-white' %>
+      <% end %>
+      </div>
+  </div>
+
+<!--アカウント編集-->
     <table class='table'>
       <%= form_with model:@user, local:true do |f| %>
-      <tr>
-        <td>アカウント画像</td>
-        <td><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-        <td><%= f.attachment_field :image %></td>
-        <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
-      </tr>
-      <tr>
-        <td>アカウント名</td>
-        <td><%= @user.name %></td>
-        <td><%= f.text_field :name %></td>
-        <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
-      </tr>
-      <tr>
-        <td>メールアドレス</td>
-        <td><%= @user.email %></td>
-        <td><%= f.email_field :email %></td>
-        <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
-      </tr>
+
+        <% if current_user.id == @user.id %>
+          <tr>
+            <td>アカウント画像</td>
+            <td><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+            <td><%= f.attachment_field :image %></td>
+            <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
+          </tr>
+          <tr>
+            <td>アカウント名</td>
+            <td><%= @user.name %></td>
+            <td><%= f.text_field :name %></td>
+            <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+            <td><%= f.email_field :email %></td>
+            <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
+          </tr>
+        <% else %>
+          <tr>
+            <td>アカウント画像</td>
+            <td><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          </tr>
+          <tr>
+            <td>アカウント名</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <% end %>
       <% end %>
+
     </table>
 
-    </div>
+    <!--コメント履歴（削除）-->
+    <h3 class ='mt-2'>コメント一覧</h3>
+      <table class='table'>
+        <% @gym_comments.each do |gym_comment| %>
+        <tr>
+          <td><%= gym_comment.gym.gym_name %></td>
+          <td><%= gym_comment.comment %></td>
+          <% if current_user.id == @user.id %>
+            <td><%= link_to "削除",  gym_comment_path, method: :delete %></td>
+          <% end %>
+        </tr>
+         <% end %>
+      </table>
 
+    <!--お気に入り-->
+    <h3 class ='mt-2'>お気に入りジム一覧</h3>
+      <div class='row'>
+        <% @gym_favorites.each do |favorite| %>
+           <p class ="d-inline ml-5">
+             <%= favorite.gym.gym_name %>
+            </p>
+         <% end %>
+      </div>
 
+      <!--フォロワー-->
+      <h3 class = 'mt-2'>フォロー一覧</h3>
+        <div>
+          <div class='row'>
+          <% @user.following_user.each do |following| %>
+             <p class='d-inline ml-5'>
+               <%= link_to following.name, user_path(following.id) %>
+                 <% if current_user.id == @user.id %>
+                  <%= link_to 'フォロー外す', unfollow_path(following.id), method: :POST %>
+                <% end %>
+             </p>
+           <% end %>
+          </div>
+        </div>
 
+    <!--退会機能-->
+    <% if current_user.id == @user.id %>
+      <div><%= link_to "退会する", user_path, method: :delete, data: { confirm: '退会しますか？' } %></div>
+    <% end %>
 </div>
+
+

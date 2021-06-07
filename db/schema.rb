@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_135254) do
+ActiveRecord::Schema.define(version: 2021_06_07_045319) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -38,11 +38,13 @@ ActiveRecord::Schema.define(version: 2021_05_25_135254) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "gym_id"
+  create_table name", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["gym_id"], name: "index_favorites_on_gym_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "gym_comments", force: :cascade do |t|
@@ -59,11 +61,28 @@ ActiveRecord::Schema.define(version: 2021_05_25_135254) do
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "station"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "likes", force: :cascade do |t|
     t.integer "gym_comment_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_135254) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "image_id"
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

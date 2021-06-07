@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -63,11 +65,15 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'activeadmin'
 gem 'bootstrap', '~> 4.5'
+gem 'coffee-script-source', '1.8.0'
 gem 'devise'
+gem 'geocoder'
+gem 'gon'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'pry-byebug', group: :development
+gem 'ransack'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
-gem 'coffee-script-source', '1.8.0'

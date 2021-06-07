@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -20,6 +21,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+          <!--ヘッダーの内容-->
             <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -30,7 +32,11 @@
             <li class="nav-item">
               <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
+
             <% else %>
+            <li class="nav-item">
+              <%= link_to 'ジム一覧',  gyms_path, class: 'nav-link text-dark' %>
+            </li>
             <li class="nav-item">
               <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
             </li>
@@ -40,6 +46,16 @@
             <% end %>
             </ul>
           </div>
+
+          <!--検索機能-->
+          <div>
+            <%= search_form_for @search, url: search_gyms_path do |f| %>
+            <%= f.label :gym_name_or_station_or_address_or_introduction_cont, "ジム検索" %>
+            <%= f.search_field :gym_name_or_station_or_address_or_introduction_cont %>
+            <%= f.submit "検索" %>
+            <% end %>
+          </div>
+
         </div>
       </nav>
     </header>
@@ -52,4 +68,15 @@
   <body>
     <%= yield %>
   </body>
+
+  <!--ヘッダー-->
+
+  <body class="d-flex flex-column vh-100">
+  <div class="bg-light">
+    <footer id="footer" class="border-top bg-white"style="height:30px">
+        <div class='mx-auto'>関西ボルダー</div>
+    </footer>
+  </div>
+</body>
+
 </html>

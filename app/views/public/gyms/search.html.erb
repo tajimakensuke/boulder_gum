@@ -1,0 +1,40 @@
+<div class ="container">
+    <h2 class='mb-5 mt-5'>ジム一覧</h2>
+
+    <h3 class='text-success'><%= @gyms.count %>件のジムがありました</h3>
+
+
+    <!--# `form_for`のRansack版-->
+<%= search_form_for @search, url: search_gyms_path do |f| %>
+  <!--# nameカラムに対して部分一致検索ができる-->
+  <%= f.label :gym_name_or_station_or_address_or_introduction_cont, "ジム検索" %>
+  <%= f.search_field :gym_name_or_station_or_address_or_introduction_cont %>
+
+  <!--# 検索ボタン-->
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
+
+
+
+
+
+
+
+  <% @gyms.each do |gym| %>
+    <div class="row mt-3">
+      <div class="col-md-4">
+
+          <h3><%= link_to gym.gym_name, gym_path(gym.id) %></h3>
+          <div><%= attachment_image_tag gym, :image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %></div>
+      </div>
+
+      <div class="col-md-8 mt-4">
+        <h4>Introduction</h4>
+        <p><%= gym.introduction %></p>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>
+
