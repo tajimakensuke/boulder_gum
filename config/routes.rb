@@ -33,5 +33,8 @@ Rails.application.routes.draw do
     resources :gym_comments, only: %i[create updaate destroy] do
       resources :likes, only: %i[create destroy]
     end
+
+    post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
+    post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
   end
 end
