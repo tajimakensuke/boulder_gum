@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Public
+class Public
   class MapsController < ApplicationController
     def index; end
 

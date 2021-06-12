@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Public
+class Public
   class UsersController < ApplicationController
     before_action :authenticate_user!, except: [:top]
     before_action :baria_user, only: [:destroy, :update]
