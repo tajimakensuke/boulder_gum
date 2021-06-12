@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-module Admin
+class Admin
   class UsersControllerTest < ActionDispatch::IntegrationTest
     # test "the truth" do
     #   assert true
