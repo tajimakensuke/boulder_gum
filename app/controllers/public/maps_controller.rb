@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Public
-  class MapsController < ApplicationController
+  class Public::MapsController < ApplicationController
     def index; end
 
     def map
@@ -26,4 +25,3 @@ class Public
       params.require(:gym).permit(:gym_name, :introduction, :image, :address, :station)
     end
   end
-end

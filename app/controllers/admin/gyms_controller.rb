@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Admin
-  class GymsController < ApplicationController
+
+  class Admin::GymsController < ApplicationController
   end
-end
+

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class Public
-  class LikesController < ApplicationController
+  class Public::LikesController < ApplicationController
     def create
       @gym_comment = GymComment.find(params[:gym_comment_id])
       like = current_user.likes.new(gym_comment_id: @gym_comment.id)
@@ -16,4 +15,3 @@ class Public
       redirect_to request.referer
     end
   end
-end
