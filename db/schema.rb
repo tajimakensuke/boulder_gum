@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_06_07_045319) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table name", force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "gym_id"
     t.datetime "created_at", null: false
