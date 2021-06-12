@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-class Admin
-  class UsersController < ApplicationController
+
+  class Admin::UsersController < ApplicationController
   end
-end
