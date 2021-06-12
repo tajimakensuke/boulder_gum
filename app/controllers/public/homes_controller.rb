@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Public
+class Public
   class HomesController < ApplicationController
     def index
       @gym_comments = GymComment.limit(5).order('created_at DESC')

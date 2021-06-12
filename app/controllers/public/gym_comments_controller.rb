@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Public
+class Public
   class GymCommentsController < ApplicationController
     
     before_action :baria_user, only: [:edit, :destroy]

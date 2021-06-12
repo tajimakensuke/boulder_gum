@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Public
+class Public
   class LikesController < ApplicationController
     def create
       @gym_comment = GymComment.find(params[:gym_comment_id])

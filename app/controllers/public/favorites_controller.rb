@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Public
+class Public
   class FavoritesController < ApplicationController
     def create
       @gym = Gym.find(params[:gym_id])
