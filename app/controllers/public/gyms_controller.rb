@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-module Public
-  class GymsController < ApplicationController
+  class Public::GymsController < ApplicationController
 
 
     def index
@@ -49,4 +48,3 @@ module Public
       params.require(:q).permit(:gym_name, :introduction, :image, :address, :station)
     end
   end
-end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Public
-  class FavoritesController < ApplicationController
+
+  class Public::FavoritesController < ApplicationController
     def create
       @gym = Gym.find(params[:gym_id])
       favorite = current_user.favorites.new(gym_id: @gym.id)
@@ -14,4 +14,3 @@ module Public
       favorite.destroy
     end
   end
-end

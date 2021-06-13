@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Public
-  class HomesController < ApplicationController
+
+  class Public::HomesController < ApplicationController
     def index
       @gym_comments = GymComment.limit(5).order('created_at DESC')
       @users = User.all
@@ -22,4 +22,3 @@ module Public
 
 
   end
-end

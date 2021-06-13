@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
-module Public
-  class UsersController < ApplicationController
+class Public::UsersController < ApplicationController
     before_action :authenticate_user!, except: [:top]
     before_action :baria_user, only: [:destroy, :update]
 
-
     def show
-
       if current_user.id == User.find(params[:id])
         @user = current_user
         @gym_comments = current_user.gym_comments
@@ -31,10 +28,8 @@ module Public
 
       redirect_to root_path
     end
-  end
 
-
-private
+  private
 
   def user_params
     params.require(:user).permit(:email, :name, :image)

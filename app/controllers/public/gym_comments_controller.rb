@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Public
-  class GymCommentsController < ApplicationController
+
+  class Public::GymCommentsController < ApplicationController
     
     before_action :baria_user, only: [:edit, :destroy]
 
@@ -35,4 +35,4 @@ module Public
       params.require(:gym_comment).permit(:comment, :user_id)
     end
   end
-end
+
