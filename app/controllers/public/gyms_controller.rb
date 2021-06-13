@@ -5,7 +5,6 @@
 
     def index
       @gyms = Gym.page(params[:page]).per(5)
-
       # 検索オブジェクト
       @search = Gym.ransack(params[:q])
       # 検索結果

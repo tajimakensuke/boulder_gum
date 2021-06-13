@@ -12,12 +12,6 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @search = Gym.ransack(params[:q])
-    # 検索結果
-    @gyms = @search.result
-    if @gyms.count == 1
-      @gym = @gyms.ids
-      redirect_to gym_path(@gym)
-    end
   end
 
   private

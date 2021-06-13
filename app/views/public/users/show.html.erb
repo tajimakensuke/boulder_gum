@@ -18,7 +18,7 @@
         <% if current_user.id == @user.id %>
           <tr>
             <td>アカウント画像</td>
-            <td><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+            <td><%= attachment_image_tag @user, :image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></td>
             <td><%= f.attachment_field :image %></td>
             <td><%= f.submit "変更", class: 'btn btn-secondary' %></td>
           </tr>

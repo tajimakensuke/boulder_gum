@@ -7,7 +7,7 @@
       <div class="col-5">
 
           <h3 class='mt-3 mb-1'><%= link_to gym.gym_name, gym_path(gym.id) %></h3>
-          <div><%= attachment_image_tag gym, :image, :fill, 150, 150, format: 'jpeg' %></div>
+          <div><%= attachment_image_tag gym, :image, size: "130x130", format: 'jpeg' %></div>
       </div>
 
       <div class="col-7 mt-4">
