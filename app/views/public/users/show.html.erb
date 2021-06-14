@@ -13,9 +13,8 @@
   </div>
 
 <!--アカウント編集画面-->
-    <table class='table'>
-      <%= form_with model:@user, local:true do |f| %>
-
+    <%= form_with model:@user, local:true do |f| %>
+      <table class='table'>
         <% if current_user.id == @user.id %>
           <tr>
             <td>アカウント画像</td>
@@ -45,10 +44,8 @@
             <td><%= @user.name %></td>
           </tr>
           <% end %>
-      <% end %>
-
-    </table>
-
+      </table>
+    <% end %>
     <!--コメント履歴（削除）-->
     <h3 class ='mt-2'>コメント一覧</h3>
       <table class='table'>
