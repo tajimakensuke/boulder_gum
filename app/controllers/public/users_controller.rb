@@ -7,8 +7,8 @@ class Public::UsersController < ApplicationController
     def show
       if current_user.id == User.find(params[:id])
         @user = current_user
-        @gym_comments = current_user.gym_comments
-        @gym_favorites = current_user.favorites
+        @gym_comments = @user.gym_comments
+        @gym_favorites = @user.favorites
       else
         @user = User.find(params[:id])
         @gym_comments = @user.gym_comments
@@ -19,14 +19,12 @@ class Public::UsersController < ApplicationController
     def update
       @user = current_user
       @user.update(user_params)
-
-      redirect_to user_path(@user.id)
+        redirect_to user_path(@user.id)
     end
 
     def destroy
       current_user.destroy
-
-      redirect_to root_path
+        redirect_to root_path
     end
 
   private

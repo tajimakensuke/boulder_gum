@@ -2,12 +2,13 @@
   <div class='row'>
     <h2 class='col-6 mb-5 mt-5'>ユーザー詳細</h2>
       <div class='col-6 mb-5 mt-5'>
-
-      <% if current_user.following?(@user) %>
-        <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: 'btn btn-danger text-white' %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: 'btn btn-success text-white' %>
-      <% end %>
+        <% unless @user == current_user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: 'btn btn-danger text-white' %>
+          <% else %>
+            <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: 'btn btn-success text-white' %>
+          <% end %>
+        <% end %>
       </div>
   </div>
 
@@ -37,7 +38,7 @@
         <% else %>
           <tr>
             <td>アカウント画像</td>
-            <td><%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+            <td><%= attachment_image_tag @user, :image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></td>
           </tr>
           <tr>
             <td>アカウント名</td>

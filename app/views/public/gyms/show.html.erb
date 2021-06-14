@@ -84,7 +84,7 @@
         <% @gym_comments.each do |gym_comment| %>
           <li class="list-group-item">
             <%= gym_comment.comment %>
-            <br>ユーザー名       <%= gym_comment.user.name %>
+            <br>ユーザー名<%= link_to gym_comment.user.name, user_path(gym_comment.user.id) %>
           </li>
 
   <!--いいね機能-->
